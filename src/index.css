@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background-color: rgb(56, 130, 195);
+  color: #2c3e50;
+  line-height: 1.6;
+  padding: 24px;
+}
+
+h1, h2 {
+  color: #0a2948;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #dcdde1;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.product-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #1e3a8a;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.form div {
+  margin-bottom: 16px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #bdc3c7;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Buttons chung */
+button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-right: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+button:last-child {
+  margin-right: 0;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+
+button.primary {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: #fff;
+}
+
+button.secondary {
+  background: linear-gradient(135deg, #9ca3af, #d1d5db);
+  color: #111;
+}
+
+button.success {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: #fff;
+}
+
+button.danger {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+  color: #fff;
+}
+
+button.warning {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+}
+
+button.info {
+  background: linear-gradient(135deg, #3b82f6, #93c5fd);
+  color: #111;
+}
+
+button.primary:hover,
+button.secondary:hover,
+button.success:hover,
+button.danger:hover,
+button.warning:hover,
+button.info:hover {
+  filter: brightness(1.1);
+}
+
+.err {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+@media (max-width: 600px) {
+  button {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
