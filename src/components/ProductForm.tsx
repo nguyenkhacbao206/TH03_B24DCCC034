@@ -9,11 +9,12 @@ interface ProductFormProps {
 }
 
 const ProductForm: React.FC<ProductFormProps> = ({ initial, onSubmit }) => {
-  const [formData, setFormData] = useState<ProductFormData>({
+  // Lưu input số dưới dạng string để input có thể trống
+  const [formData, setFormData] = useState({
     ten: initial?.ten || "",
     danhMuc: initial?.danhMuc || "",
-    gia: initial?.gia || 0,
-    soLuong: initial?.soLuong || 0,
+    gia: initial?.gia?.toString() || "",
+    soLuong: initial?.soLuong?.toString() || "",
     moTa: initial?.moTa || "",
   });
 
@@ -25,20 +26,31 @@ const ProductForm: React.FC<ProductFormProps> = ({ initial, onSubmit }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: name === "gia" || name === "soLuong" ? Number(value) : value,
+      [name]: value,
     });
   };
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
+    const numericGia = Number(formData.gia);
+    const numericSoLuong = Number(formData.soLuong);
+
     if (!formData.ten || formData.ten.trim().length < 3)
       newErrors.ten = "Tên sản phẩm phải có ít nhất 3 ký tự";
-    if (!formData.danhMuc)
-      newErrors.danhMuc = "Vui lòng chọn danh mục";
-    if (formData.gia <= 0)
+    if (!formData.danhMuc) newErrors.danhMuc = "Vui lòng chọn danh mục";
+    if (!formData.gia || isNaN(numericGia) || numericGia <= 0)
       newErrors.gia = "Giá phải là số dương";
-    if (formData.soLuong <= 0 || !Number.isInteger(formData.soLuong))
+    if (
+      !formData.soLuong ||
+      isNaN(numericSoLuong) ||
+      numericSoLuong <= 0 ||
+      !Number.isInteger(numericSoLuong)
+    )
       newErrors.soLuong = "Số lượng phải là số nguyên dương";
+
+    if (!formData.moTa || formData.moTa.trim().length < 10) {
+      newErrors.moTa = "vui lòng nhập đủ từ 10 ký tự trở lên"
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -47,7 +59,14 @@ const ProductForm: React.FC<ProductFormProps> = ({ initial, onSubmit }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    onSubmit(formData);
+
+    onSubmit({
+      ten: formData.ten,
+      danhMuc: formData.danhMuc,
+      gia: Number(formData.gia),
+      soLuong: Number(formData.soLuong),
+      moTa: formData.moTa,
+    });
   };
 
   return (
@@ -73,19 +92,32 @@ const ProductForm: React.FC<ProductFormProps> = ({ initial, onSubmit }) => {
 
       <div>
         <label>Giá:</label>
-        <input type="number" name="gia" value={formData.gia} onChange={handleChange} />
+        <input
+          type="number"
+          name="gia"
+          value={formData.gia}
+          onChange={handleChange}
+          placeholder="Nhập giá"
+        />
         {errors.gia && <p style={{ color: "red" }}>{errors.gia}</p>}
       </div>
 
       <div>
         <label>Số lượng:</label>
-        <input type="number" name="soLuong" value={formData.soLuong} onChange={handleChange} />
+        <input
+          type="number"
+          name="soLuong"
+          value={formData.soLuong}
+          onChange={handleChange}
+          placeholder="Nhập số lượng"
+        />
         {errors.soLuong && <p style={{ color: "red" }}>{errors.soLuong}</p>}
       </div>
 
       <div>
         <label>Mô tả:</label>
         <textarea name="moTa" value={formData.moTa} onChange={handleChange} />
+        {errors.moTa && <p style={{ color: "red" }}>{errors.moTa}</p>}
       </div>
 
       <button type="submit">Lưu</button>

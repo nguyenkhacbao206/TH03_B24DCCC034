@@ -5,55 +5,59 @@
 }
 
 body {
-  font-family: 'Segoe UI', 'Arial', sans-serif;
-  background-color: rgb(56, 130, 195);
-  color: #2c3e50;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f5f5;
+  color: #2b2b2b;
   line-height: 1.6;
   padding: 24px;
 }
 
+
 h1, h2 {
-  color: #0a2948;
+  color: #1a1a1a;
+  font-weight: 700;
   margin-bottom: 16px;
 }
 
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   margin-top: 24px;
 }
 
 .product-card {
-  background-color: #ffffff;
-  border: 1px solid #dcdde1;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px;
+  border: 1px solid #dddddd;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 
 .product-card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 12px;
 }
 
 .product-card h3 {
   font-size: 18px;
   margin-bottom: 8px;
-  color: #1e3a8a;
+  color: #111;
 }
 
 .product-card p {
   font-size: 14px;
   color: #555;
 }
+
 
 .form div {
   margin-bottom: 16px;
@@ -62,16 +66,17 @@ h1, h2 {
 input, select, textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #bdc3c7;
-  border-radius: 10px;
+  border: 1px solid #c9c9c9;
+  border-radius: 12px;
+  background: #fafafa;
   font-size: 15px;
-  background-color: #fff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: 0.2s ease;
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+  border-color: #bcbcbc;
+  box-shadow: 0 0 8px rgba(0,0,0,0.12);
+  background: #fff;
   outline: none;
 }
 
@@ -80,17 +85,17 @@ textarea {
   min-height: 100px;
 }
 
-/* Buttons chung */
+
 button {
   padding: 12px 22px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   font-size: 15px;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  transition: 0.25s ease;
   margin-right: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 button:last-child {
@@ -99,42 +104,41 @@ button:last-child {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 button:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
-
 button.primary {
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
-  color: #fff;
+  background: linear-gradient(135deg, #d0d0d0, #f5f5f5);
+  color: #111;
 }
 
 button.secondary {
-  background: linear-gradient(135deg, #9ca3af, #d1d5db);
-  color: #111;
+  background: linear-gradient(135deg, #e0e0e0, #f9f9f9);
+  color: #222;
 }
 
 button.success {
-  background: linear-gradient(135deg, #10b981, #34d399);
-  color: #fff;
+  background: linear-gradient(135deg, #cde4cd, #ebfce9);
+  color: #0d420d;
 }
 
 button.danger {
-  background: linear-gradient(135deg, #ef4444, #f87171);
-  color: #fff;
+  background: linear-gradient(135deg, #e1bebe, #fce5e5);
+  color: #611616;
 }
 
 button.warning {
-  background: linear-gradient(135deg, #f59e0b, #fbbf24);
-  color: #fff;
+  background: linear-gradient(135deg, #f0e4b0, #faf0d4);
+  color: #5a4a1c;
 }
 
 button.info {
-  background: linear-gradient(135deg, #3b82f6, #93c5fd);
-  color: #111;
+  background: linear-gradient(135deg, #d9d9d9, #f3f3f3);
+  color: #222;
 }
 
 button.primary:hover,
@@ -143,23 +147,31 @@ button.success:hover,
 button.danger:hover,
 button.warning:hover,
 button.info:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.08);
 }
 
+
 .err {
-  color: #e74c3c;
+  color: #c0392b;
   font-size: 13px;
   margin-top: 6px;
 }
 
-@media (max-width: 600px) {
-  button {
-    margin-right: 0;
-    margin-bottom: 10px;
-    width: 100%;
-  }
 
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 12px;
+    margin-right: 0;
   }
 }

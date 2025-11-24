@@ -4,7 +4,8 @@ import { ProductProvider } from "./context/ProductContext";
 import ProductList from "./components/ProductList";
 import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
-import ProductDetailPage from "./pages/ProductDetailPage";
+import ProductDetailPage from "./pages/ProductDetailPage";  
+import "./App.css";
 
 const App = () => {
   return (
